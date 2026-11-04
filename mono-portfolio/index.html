@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MONO — Portfolio</title>
+<meta name="description" content="シンプルな配色とモーションのポートフォリオサイト">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader__count"><span id="count">0</span>%</div>
+  <div class="loader__bar"><span id="bar"></span></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="header">
+  <a href="#top" class="logo">MONO<span>.</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span></button>
+  <nav class="nav" id="nav">
+    <a href="#about" data-hover>About</a>
+    <a href="#works" data-hover>Works</a>
+    <a href="#service" data-hover>Service</a>
+    <a href="#contact" data-hover>Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <canvas id="bg"></canvas>
+    <h1 class="hero__title">
+      <span class="line"><span class="split">Design</span></span>
+      <span class="line"><span class="split">in&nbsp;<em>Motion</em></span></span>
+    </h1>
+    <p class="hero__sub reveal">余白と動きで、伝わるデザインを。</p>
+    <div class="scroll-hint"><span>Scroll</span><i></i></div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee"><div class="marquee__inner">
+    <span>WEB DESIGN — BRANDING — UI / UX — MOTION — FRONTEND — </span>
+    <span>WEB DESIGN — BRANDING — UI / UX — MOTION — FRONTEND — </span>
+  </div></div>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <h2 class="section__label reveal">01 / About</h2>
+    <p class="about__text reveal">
+      シンプルであることは、何も足さないことではなく、<br class="pc">
+      本当に必要なものだけを、美しく残すこと。<br>
+      私たちはデザインとテクノロジーで、ブランドの本質を形にします。
+    </p>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="120">0</b><span>Projects</span></div>
+      <div class="stat reveal"><b data-count="8">0</b><span>Years</span></div>
+      <div class="stat reveal"><b data-count="35">0</b><span>Clients</span></div>
+    </div>
+  </section>
+
+  <!-- Works (horizontal scroll) -->
+  <section class="works" id="works">
+    <div class="works__sticky">
+      <h2 class="section__label works__label">02 / Works</h2>
+      <div class="works__track" id="track">
+        <article class="card" data-hover><div class="card__img g1"></div><h3>Project Alpha</h3><p>Brand / Web</p></article>
+        <article class="card" data-hover><div class="card__img g2"></div><h3>Project Beta</h3><p>UI / UX</p></article>
+        <article class="card" data-hover><div class="card__img g3"></div><h3>Project Gamma</h3><p>Motion</p></article>
+        <article class="card" data-hover><div class="card__img g4"></div><h3>Project Delta</h3><p>Frontend</p></article>
+        <article class="card" data-hover><div class="card__img g5"></div><h3>Project Epsilon</h3><p>Branding</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <section class="section service" id="service">
+    <h2 class="section__label reveal">03 / Service</h2>
+    <ul class="service__list">
+      <li class="reveal" data-hover><span>01</span>Web Design<i>→</i></li>
+      <li class="reveal" data-hover><span>02</span>Branding<i>→</i></li>
+      <li class="reveal" data-hover><span>03</span>UI / UX<i>→</i></li>
+      <li class="reveal" data-hover><span>04</span>Development<i>→</i></li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <h2 class="section__label reveal">04 / Contact</h2>
+    <a href="mailto:hello@example.com" class="contact__big magnetic" data-hover>Let's talk<span>↗</span></a>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> MONO. All rights reserved.</p>
+  <a href="#top" data-hover>Back to top ↑</a>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
