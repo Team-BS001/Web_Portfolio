@@ -1,0 +1,327 @@
+/* ===========================
+   POP PORTFOLIO - style.css
+   =========================== */
+:root {
+  --ink: #111111;
+  --paper: #fff7e8;
+  --pink: #ff4fa3;
+  --yellow: #ffd60a;
+  --blue: #3a6bff;
+  --green: #2ecc71;
+  --orange: #ff7a1a;
+  --border: 3px solid var(--ink);
+  --shadow: 6px 6px 0 var(--ink);
+  --en: "Dela Gothic One", sans-serif;
+  --body: "Space Grotesk", "Zen Kaku Gothic New", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body {
+  font-family: var(--body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+/* 紙っぽいドット背景 */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image: radial-gradient(rgba(17,17,17,.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none; z-index: 0;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.sp { display: none; }
+
+/* ---------- Loader ---------- */
+.loader {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--yellow);
+  display: grid; place-items: center;
+  transition: transform .8s cubic-bezier(.77,0,.18,1);
+}
+.loader.is-done { transform: translateY(-100%); }
+.loader__blocks { display: flex; gap: 10px; }
+.loader__blocks span {
+  width: 26px; height: 26px; border: var(--border); border-radius: 50%;
+  animation: bounce .6s ease-in-out infinite alternate;
+}
+.loader__blocks span:nth-child(1) { background: var(--pink); }
+.loader__blocks span:nth-child(2) { background: var(--blue); animation-delay: .1s; }
+.loader__blocks span:nth-child(3) { background: var(--green); animation-delay: .2s; }
+.loader__blocks span:nth-child(4) { background: var(--orange); animation-delay: .3s; }
+@keyframes bounce { to { transform: translateY(-24px); } }
+
+/* ---------- Cursor ---------- */
+.cursor {
+  position: fixed; top: 0; left: 0; z-index: 999;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--pink); border: 2px solid var(--ink);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width .25s, height .25s, background .25s;
+  mix-blend-mode: multiply;
+}
+.cursor.is-hover { width: 64px; height: 64px; background: var(--yellow); }
+@media (hover: none) { .cursor { display: none; } }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; top: 16px; left: 16px; right: 16px; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px 10px 20px;
+  background: #fff; border: var(--border); border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.nav__logo { font-family: var(--en); font-size: 1.1rem; letter-spacing: .02em; }
+.nav__logo span { color: var(--pink); display: inline-block; animation: spin 4s linear infinite; }
+.nav__menu { display: flex; gap: 6px; align-items: center; }
+.nav__menu a {
+  font-weight: 700; font-size: .85rem; padding: 6px 14px; border-radius: 999px;
+  transition: background .2s, transform .2s;
+}
+.nav__menu a:hover { background: var(--yellow); transform: rotate(-4deg); }
+.nav__cta { background: var(--ink); color: #fff; }
+.nav__cta:hover { color: var(--ink); }
+.nav__toggle { display: none; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 6vw 80px;
+}
+.hero__title {
+  font-family: var(--en); font-weight: 400;
+  font-size: clamp(3.4rem, 13vw, 11rem);
+  line-height: .95; letter-spacing: -.01em;
+}
+.line { display: block; overflow: hidden; padding: .04em 0; }
+.word {
+  display: inline-block; transform: translateY(110%);
+  transition: transform 1s cubic-bezier(.2,.9,.2,1.2);
+}
+.is-loaded .word { transform: translateY(0); }
+.is-loaded .line:nth-child(2) .word { transition-delay: .12s; }
+.is-loaded .line:nth-child(3) .word { transition-delay: .24s; }
+.word--pink { color: var(--pink); -webkit-text-stroke: 3px var(--ink); }
+.word--outline { color: transparent; -webkit-text-stroke: 3px var(--ink); }
+.word:hover { animation: jelly .6s; }
+@keyframes jelly {
+  25% { transform: scale(1.12, .88); } 50% { transform: scale(.92, 1.08); }
+  75% { transform: scale(1.04, .96); } 100% { transform: scale(1); }
+}
+.hero__lead { margin-top: 28px; font-size: clamp(1rem, 2.2vw, 1.35rem); font-weight: 700; font-family: "Zen Kaku Gothic New", sans-serif; }
+
+.hero__shapes { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.shape { position: absolute; border: var(--border); box-shadow: var(--shadow); }
+.shape--circle { width: 22vw; max-width: 260px; aspect-ratio: 1; border-radius: 50%; background: var(--yellow); top: 14%; right: 8%; }
+.shape--star { border: none; box-shadow: none; font-size: clamp(4rem, 10vw, 9rem); color: var(--blue); -webkit-text-stroke: 3px var(--ink); top: 55%; right: 26%; animation: spin 10s linear infinite; }
+.shape--square { width: 90px; height: 90px; background: var(--green); bottom: 12%; right: 6%; transform: rotate(18deg); border-radius: 14px; }
+.shape--pill { width: 180px; height: 60px; border-radius: 999px; background: var(--pink); top: 22%; left: 52%; }
+.shape--tri { border: none; box-shadow: none; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 86px solid var(--orange); bottom: 10%; left: 62%; filter: drop-shadow(5px 5px 0 var(--ink)); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.badge {
+  position: absolute; right: 6vw; bottom: 6vh;
+  width: 120px; height: 120px; display: grid; place-items: center;
+  background: #fff; border: var(--border); border-radius: 50%; box-shadow: var(--shadow);
+  transition: transform .3s;
+}
+.badge:hover { transform: scale(1.08); }
+.badge__ring { position: absolute; inset: 0; animation: spin 12s linear infinite; }
+.badge__ring text { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: 2px; }
+.badge__arrow { font-size: 1.8rem; font-weight: 700; animation: bob 1.2s ease-in-out infinite alternate; }
+@keyframes bob { to { transform: translateY(6px); } }
+
+/* ---------- Marquee ---------- */
+.marquee {
+  position: relative; z-index: 2; overflow: hidden;
+  border-top: var(--border); border-bottom: var(--border);
+  padding: 14px 0; white-space: nowrap;
+  font-family: var(--en); font-size: clamp(1.4rem, 4vw, 2.6rem);
+}
+.marquee--yellow { background: var(--yellow); transform: rotate(-2deg); margin: 0 -2%; }
+.marquee--blue { background: var(--blue); color: #fff; transform: rotate(1.5deg); margin: -10px -2% 0; font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; }
+.marquee__track { display: inline-flex; animation: marquee 22s linear infinite; }
+.marquee--reverse .marquee__track { animation-direction: reverse; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Section common ---------- */
+.section { position: relative; z-index: 1; padding: 120px 6vw; max-width: 1400px; margin: 0 auto; }
+.section__title {
+  font-family: var(--en); font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 6rem); line-height: 1;
+  margin-bottom: 56px; display: flex; align-items: flex-start; gap: 14px;
+}
+.num {
+  font-family: var(--body); font-size: .9rem; font-weight: 700;
+  background: var(--ink); color: #fff; padding: 2px 10px; border-radius: 999px; margin-top: .6em;
+}
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(50px) rotate(2deg); transition: opacity .7s, transform .8s cubic-bezier(.2,.9,.2,1.2); }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- Works ---------- */
+.works__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; }
+.card {
+  background: #fff; border: var(--border); border-radius: 22px; box-shadow: var(--shadow);
+  overflow: hidden; transition: box-shadow .2s;
+  transform-style: preserve-3d;
+}
+.card:nth-child(even) { margin-top: 60px; }
+.card:hover { box-shadow: 12px 12px 0 var(--ink); }
+.card__visual {
+  position: relative; aspect-ratio: 4/3; background: var(--bg);
+  border-bottom: var(--border); display: grid; place-items: center; overflow: hidden;
+}
+.blob {
+  position: absolute; width: 70%; aspect-ratio: 1; background: rgba(255,255,255,.35);
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  animation: morph 8s ease-in-out infinite;
+}
+@keyframes morph {
+  50% { border-radius: 63% 37% 38% 62% / 55% 61% 39% 45%; transform: rotate(60deg) scale(1.1); }
+}
+.card__emoji { position: relative; font-size: clamp(4rem, 9vw, 7rem); transition: transform .4s cubic-bezier(.2,.9,.2,1.6); }
+.card:hover .card__emoji { transform: scale(1.2) rotate(-12deg); }
+.card__body { padding: 20px 24px 26px; }
+.card__body h3 { font-size: 1.4rem; margin: 8px 0 2px; }
+.card__body p { font-family: "Zen Kaku Gothic New", sans-serif; font-size: .95rem; }
+.tag { display: inline-block; font-size: .75rem; font-weight: 700; border: 2px solid var(--ink); border-radius: 999px; padding: 0 10px; background: var(--yellow); }
+
+/* ---------- About ---------- */
+.about__inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: center; }
+.about__face { position: relative; display: grid; place-items: center; }
+.face {
+  width: min(360px, 80vw); aspect-ratio: 1; border-radius: 50%;
+  background: var(--yellow); border: var(--border); box-shadow: 10px 10px 0 var(--ink);
+  display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 12% 18%;
+}
+.face__eye { width: 22%; aspect-ratio: 1; background: #fff; border: var(--border); border-radius: 50%; display: grid; place-items: center; }
+.face__pupil { width: 45%; aspect-ratio: 1; background: var(--ink); border-radius: 50%; transition: transform .08s; }
+.face__mouth { width: 50%; height: 0; padding-bottom: 22%; border: var(--border); border-top: none; border-radius: 0 0 999px 999px; background: var(--pink); flex-basis: 50%; }
+.sticker {
+  position: absolute; font-family: var(--en); border: var(--border); box-shadow: 4px 4px 0 var(--ink);
+}
+.sticker--1 { top: 2%; left: 4%; background: var(--pink); color: #fff; padding: 6px 16px; border-radius: 12px; transform: rotate(-12deg); animation: wiggle 2.4s ease-in-out infinite; }
+.sticker--2 { bottom: 4%; right: 8%; background: var(--blue); color: var(--yellow); width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; animation: spin 6s linear infinite; }
+@keyframes wiggle { 50% { transform: rotate(8deg) scale(1.05); } }
+.about__text { font-family: "Zen Kaku Gothic New", sans-serif; }
+.about__text .big { font-size: clamp(1.6rem, 3.4vw, 2.4rem); font-weight: 700; line-height: 1.5; margin-bottom: 20px; }
+mark { background: linear-gradient(transparent 55%, var(--pink) 55%); color: inherit; }
+.skills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.skills li {
+  font-family: var(--body); font-weight: 700; padding: 6px 16px;
+  border: var(--border); border-radius: 999px; background: #fff; box-shadow: 3px 3px 0 var(--ink);
+  transition: transform .2s, background .2s;
+}
+.skills li:nth-child(3n+1):hover { background: var(--pink); }
+.skills li:nth-child(3n+2):hover { background: var(--green); }
+.skills li:nth-child(3n):hover { background: var(--yellow); }
+.skills li:hover { transform: translateY(-4px) rotate(-3deg); }
+
+/* ---------- Service ---------- */
+.service__list { display: grid; gap: 18px; }
+.acc { background: #fff; border: var(--border); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+.acc summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 28px; font-family: var(--en); font-size: clamp(1.4rem, 4vw, 2.4rem);
+  transition: background .25s;
+}
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary:hover { background: var(--yellow); }
+.acc[open] summary { background: var(--pink); color: #fff; }
+.acc summary i { position: relative; width: 40px; height: 40px; flex-shrink: 0; border: var(--border); border-radius: 50%; background: #fff; }
+.acc summary i::before, .acc summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 16px; height: 3px; background: var(--ink); transform: translate(-50%, -50%); transition: transform .3s; }
+.acc summary i::after { transform: translate(-50%, -50%) rotate(90deg); }
+.acc[open] summary i::after { transform: translate(-50%, -50%) rotate(0); }
+.acc p { padding: 22px 28px 26px; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 1.05rem; border-top: var(--border); }
+
+/* ---------- Contact ---------- */
+.contact {
+  position: relative; z-index: 1; text-align: center;
+  background: var(--ink); color: #fff; padding: 120px 6vw;
+  border-top: var(--border);
+}
+.contact__sub { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 1.1rem; }
+.contact__big {
+  display: inline-flex; flex-direction: column; margin: 24px 0 40px;
+  font-family: var(--en); font-size: clamp(4rem, 16vw, 13rem); line-height: .95;
+  color: var(--yellow); transition: transform .3s;
+}
+.contact__big span:last-child { color: var(--pink); }
+.contact__big:hover { transform: rotate(-3deg) scale(1.04); }
+.contact__big:hover span { animation: jelly .6s; }
+.contact__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.contact__links a {
+  padding: 10px 22px; border: 3px solid #fff; border-radius: 999px; font-weight: 700;
+  transition: background .2s, color .2s, transform .2s;
+}
+.contact__links a:hover { background: #fff; color: var(--ink); transform: translateY(-4px); }
+
+/* ---------- Footer ---------- */
+.footer {
+  position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw; background: var(--yellow); border-top: var(--border); font-weight: 700;
+}
+.footer__top { border: var(--border); border-radius: 999px; padding: 4px 16px; background: #fff; }
+
+/* ===========================
+   スマホ対応
+   =========================== */
+@media (max-width: 768px) {
+  .sp { display: inline; }
+  .nav { top: 12px; left: 12px; right: 12px; padding: 8px 8px 8px 16px; }
+  .nav__toggle {
+    display: grid; place-content: center; gap: 6px;
+    width: 44px; height: 44px; border: var(--border); border-radius: 50%;
+    background: var(--yellow); cursor: pointer;
+  }
+  .nav__toggle span { display: block; width: 18px; height: 3px; background: var(--ink); transition: transform .3s; }
+  .nav.is-open .nav__toggle span:first-child { transform: translateY(4.5px) rotate(45deg); }
+  .nav.is-open .nav__toggle span:last-child { transform: translateY(-4.5px) rotate(-45deg); }
+  .nav__menu {
+    position: absolute; top: calc(100% + 10px); left: 0; right: 0;
+    flex-direction: column; gap: 4px; padding: 16px;
+    background: #fff; border: var(--border); border-radius: 22px; box-shadow: var(--shadow);
+    opacity: 0; visibility: hidden; transform: translateY(-10px) scale(.96);
+    transition: opacity .25s, transform .25s, visibility .25s;
+  }
+  .nav.is-open .nav__menu { opacity: 1; visibility: visible; transform: none; }
+  .nav__menu a { width: 100%; text-align: center; font-family: var(--en); font-weight: 400; font-size: 1.4rem; padding: 10px; }
+
+  .hero { padding: 110px 16px 160px; }
+  .word--pink, .word--outline { -webkit-text-stroke-width: 2px; }
+  .shape--circle { width: 42vw; top: 12%; right: -8%; }
+  .shape--pill { width: 110px; height: 40px; top: auto; bottom: 30%; left: 8%; }
+  .shape--square { width: 60px; height: 60px; bottom: 8%; left: 10%; right: auto; }
+  .shape--star { top: auto; bottom: 18%; right: 40%; }
+  .shape--tri { display: none; }
+  .badge { width: 96px; height: 96px; right: 16px; bottom: 28px; }
+  .badge__ring text { font-size: 10px; }
+
+  .section { padding: 90px 16px; }
+  .section__title { margin-bottom: 36px; }
+  .works__grid { grid-template-columns: 1fr; gap: 28px; }
+  .card:nth-child(even) { margin-top: 0; }
+  .card:nth-child(odd) { transform: rotate(-1.5deg); }
+  .card:nth-child(even) { transform: rotate(1.5deg); }
+  .card.reveal:not(.is-in) { transform: translateY(50px) rotate(4deg); }
+
+  .about__inner { grid-template-columns: 1fr; gap: 40px; }
+  .acc summary, .acc p { padding-left: 20px; padding-right: 20px; }
+  .contact { padding: 90px 16px; }
+  .footer { padding: 18px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .word, .reveal { transform: none; opacity: 1; }
+}

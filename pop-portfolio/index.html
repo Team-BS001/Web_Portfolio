@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>POP PORTFOLIO</title>
+  <meta name="description" content="ポップでにぎやかなポートフォリオサイト" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Grotesk:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- カスタムカーソル（PCのみ） -->
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- ローディング -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__blocks"><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <header class="nav">
+    <a href="#top" class="nav__logo">YOUR<span>●</span>NAME</a>
+    <button class="nav__toggle" aria-label="メニュー" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav__menu">
+      <a href="#works">WORKS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#service">SERVICE</a>
+      <a href="#contact" class="nav__cta">CONTACT</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__shapes" aria-hidden="true">
+        <div class="shape shape--circle" data-speed="0.3"></div>
+        <div class="shape shape--star" data-speed="-0.2">✦</div>
+        <div class="shape shape--square" data-speed="0.15"></div>
+        <div class="shape shape--pill" data-speed="-0.35"></div>
+        <div class="shape shape--tri" data-speed="0.25"></div>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="line"><span class="word">MAKE</span></span>
+        <span class="line"><span class="word word--pink">IT</span> <span class="word word--outline">LOUD</span></span>
+        <span class="line"><span class="word">&amp; FUN!</span></span>
+      </h1>
+      <p class="hero__lead">デザインとコードで、<br class="sp" />ワクワクするウェブをつくります。</p>
+
+      <a href="#works" class="badge" aria-label="作品を見る">
+        <svg viewBox="0 0 120 120" class="badge__ring">
+          <defs><path id="circlePath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs>
+          <text><textPath href="#circlePath">SCROLL DOWN ✦ SEE MY WORKS ✦ </textPath></text>
+        </svg>
+        <span class="badge__arrow">↓</span>
+      </a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee marquee--yellow" aria-hidden="true">
+      <div class="marquee__track">
+        <span>WEB DESIGN ✦ BRANDING ✦ CODING ✦ MOTION ✦ ILLUSTRATION ✦&nbsp;</span>
+        <span>WEB DESIGN ✦ BRANDING ✦ CODING ✦ MOTION ✦ ILLUSTRATION ✦&nbsp;</span>
+      </div>
+    </div>
+    <div class="marquee marquee--blue marquee--reverse" aria-hidden="true">
+      <div class="marquee__track">
+        <span>つくるのがすき ● たのしいがすき ● POP がすき ●&nbsp;</span>
+        <span>つくるのがすき ● たのしいがすき ● POP がすき ●&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- WORKS -->
+    <section class="section works" id="works">
+      <h2 class="section__title reveal"><span class="num">01</span>WORKS</h2>
+      <div class="works__grid">
+        <article class="card reveal tilt" style="--bg: var(--pink)">
+          <div class="card__visual"><div class="blob"></div><span class="card__emoji">🍩</span></div>
+          <div class="card__body"><span class="tag">WEB</span><h3>Donut Shop Site</h3><p>ドーナツ屋さんのブランドサイト</p></div>
+        </article>
+        <article class="card reveal tilt" style="--bg: var(--blue)">
+          <div class="card__visual"><div class="blob"></div><span class="card__emoji">🎧</span></div>
+          <div class="card__body"><span class="tag">APP</span><h3>Music Player UI</h3><p>音楽アプリのUIデザイン</p></div>
+        </article>
+        <article class="card reveal tilt" style="--bg: var(--green)">
+          <div class="card__visual"><div class="blob"></div><span class="card__emoji">🌵</span></div>
+          <div class="card__body"><span class="tag">BRAND</span><h3>Plant Store Logo</h3><p>観葉植物ショップのロゴ</p></div>
+        </article>
+        <article class="card reveal tilt" style="--bg: var(--orange)">
+          <div class="card__visual"><div class="blob"></div><span class="card__emoji">🚀</span></div>
+          <div class="card__body"><span class="tag">LP</span><h3>Startup Landing</h3><p>スタートアップのLP</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <h2 class="section__title reveal"><span class="num">02</span>ABOUT</h2>
+      <div class="about__inner">
+        <div class="about__face reveal">
+          <div class="face">
+            <div class="face__eye"><div class="face__pupil"></div></div>
+            <div class="face__eye"><div class="face__pupil"></div></div>
+            <div class="face__mouth"></div>
+          </div>
+          <div class="sticker sticker--1">HELLO!</div>
+          <div class="sticker sticker--2">★</div>
+        </div>
+        <div class="about__text reveal">
+          <p class="big">はじめまして！<br /><mark>ウェブデザイナー</mark>の<br />YOUR NAME です。</p>
+          <p>見た人が思わずニヤッとしてしまうような、遊び心のあるデザインが得意です。HTML / CSS / JavaScript でのコーディングまで一貫して担当します。</p>
+          <ul class="skills">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Figma</li><li>Photoshop</li><li>Illustrator</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE -->
+    <section class="section service" id="service">
+      <h2 class="section__title reveal"><span class="num">03</span>SERVICE</h2>
+      <div class="service__list">
+        <details class="acc reveal" open>
+          <summary><span>Web Design</span><i></i></summary>
+          <p>目的とターゲットに合わせて、印象に残るウェブサイトをデザインします。</p>
+        </details>
+        <details class="acc reveal">
+          <summary><span>Coding</span><i></i></summary>
+          <p>スマホ対応・アニメーション込みで、デザインを忠実に実装します。</p>
+        </details>
+        <details class="acc reveal">
+          <summary><span>Branding</span><i></i></summary>
+          <p>ロゴやカラー、トーンなど、ブランドの「らしさ」をかたちにします。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <p class="contact__sub reveal">お仕事のご相談はこちら</p>
+      <a href="mailto:hello@example.com" class="contact__big reveal">
+        <span>LET'S</span><span>TALK!</span>
+      </a>
+      <div class="contact__links reveal">
+        <a href="#">Instagram</a><a href="#">X</a><a href="https://github.com/">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> YOUR NAME</p>
+    <a href="#top" class="footer__top">TOP ↑</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
